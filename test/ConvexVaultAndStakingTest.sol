@@ -106,7 +106,7 @@ contract FraxFarmERC20TransfersTest is Test {
         vm.etch(address(cvxVault), address(vaultImpl).code);
         cvxVault = Vault(vaultImpl);
         
-        // vaultImpl.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
+        Vault(vaultImpl).initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress);//, convexPoolRegistry, 36);
         
         // deploy our own convex vault 
         // (bool success, bytes memory retBytes) = convexBooster.call(abi.encodeWithSignature("createVault(uint256)", 36)); 
