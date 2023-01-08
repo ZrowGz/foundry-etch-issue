@@ -98,7 +98,7 @@ contract FraxFarmERC20TransfersTest is Test {
 
         // Deploy the logic for the transferrable vault
         cvxVault = new Vault();
-        //cvxVault.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
+        // cvxVault.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
         // overwrite the deployed vault code with the transferrable
         vm.etch(address(senderVault), address(cvxVault).code);
         vm.etch(address(receiverVault), address(cvxVault).code);
@@ -106,12 +106,13 @@ contract FraxFarmERC20TransfersTest is Test {
         vm.etch(address(cvxVault), address(vaultImpl).code);
         cvxVault = Vault(vaultImpl);
         
-        //vaultImpl.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
+        // vaultImpl.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
+        
         // deploy our own convex vault 
         // (bool success, bytes memory retBytes) = convexBooster.call(abi.encodeWithSignature("createVault(uint256)", 36)); 
         // require(success, "createVault failed");
         nonCompliantVault = Vault(convexBooster.createVault(36));
-        nonCompliantVault.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
+        // nonCompliantVault.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
         // nonCompliantVault = Vault(abi.decode(retBytes, (address)));
 
         ///// Deploy the compliant vault owner logic /////
@@ -124,6 +125,6 @@ contract FraxFarmERC20TransfersTest is Test {
         // (success, retBytes) = convexBooster.call(abi.encodeWithSignature("createVault(uint256)", 36)); 
         // require(success, "createVault failed");
         compliantVault = Vault(convexBooster.createVault(36));//Vault(abi.decode(retBytes, (address)));
-        compliantVault.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
+        // compliantVault.initialize(address(this), address(frxFarm), cvxStkFrxEthLp, vaultRewardsAddress, convexPoolRegistry, 36);
     }
 }
