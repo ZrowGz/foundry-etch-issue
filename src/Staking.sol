@@ -1899,7 +1899,7 @@ contract FraxUnifiedFarm_ERC20_V2 is FraxUnifiedFarmTemplate_V2 {
 
         emit StakeLocked(staker_address, liquidity, secs, lockedStakes[staker_address].length, source_address);
 
-        return lockedStakes[staker_address].length;
+        return lockedStakes[staker_address].length - 1;
     }
 
     // ------ WITHDRAWING ------
