@@ -7,7 +7,7 @@ contract MockVaultOwner {
     function beforeLockTransfer(
         address,
         address,
-        bytes32,
+        uint256,
         bytes calldata
     ) external pure returns (bytes4) {
         return this.beforeLockTransfer.selector;
@@ -15,7 +15,7 @@ contract MockVaultOwner {
     function onLockReceived(
         address,
         address,
-        bytes32,
+        uint256,
         bytes calldata
     ) external pure returns (bytes4) {
         return this.onLockReceived.selector;
